@@ -1,3 +1,4 @@
+/* eslint-disable no-undef,class-methods-use-this */
 // Copyright 2017, Venkat Peri.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -19,6 +20,28 @@
 // OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
 // USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-module.exports = require( './lib/BabelTaskPlugin' );
+const { transformTaskPluginClass } = require( 'hutt' );
+const pify = require( 'pify' );
+const render = pify( require( 'node-sass' ).render );
+const path = require( 'path' );
+const replaceExt = require( 'replace-ext' );
 
+const defaultOpts = {};
+
+function transformFile( file, opts ) {
+  return render( Object.assign( {}, opts, { file } ) )
+}
+
+module.exports = transformTaskPluginClass( {
+  dependsOn: ['sourceset-sass'],
+  name: 'sass',
+  transformFile,
+  defaultOpts,
+  addBuildDep: true,
+  sourceSetName: 'sass',
+  outputs: {
+    'css': ( x ) => replaceExt( x, '.css' ),
+    'map': ( x ) => `${x}.map`,
+  }
+} );
 

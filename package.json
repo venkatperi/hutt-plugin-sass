@@ -1,5 +1,5 @@
 {
-  "name": "hutt-plugin-babel",
+  "name": "hutt-plugin-sass",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -11,16 +11,30 @@
   },
   "author": "",
   "license": "MIT",
-  "peerDependencies": {
-    "babel-core": "^6.26.0"
-  },
+  "peerDependencies": {},
   "devDependencies": {
-    "babel-preset-env": "^1.6.0",
     "mocha": "^3.5.0"
   },
   "dependencies": {
     "arrayp": "^1.1.0",
+    "node-sass": "^4.5.3",
     "pify": "^3.0.0",
+    "replace-ext": "^1.0.0",
     "write": "^1.0.3"
-  }
+  },
+  "keywords": [
+    "hutt-plugin",
+    "babel",
+    "transpiler",
+    "es2015",
+    "es2016",
+    "es2017",
+    "rewriting",
+    "transformation",
+    "syntax",
+    "codegen",
+    "desugaring",
+    "javascript",
+    "compiler"
+  ]
 }
